@@ -56,7 +56,7 @@
       --bg2:   #F4E8E3;
       --txt:   #18120F;
       --mut:   #7A6860;
-      --rose:  #C4865A;
+      --rose:  #A08B70;
       --sage:  #7A9C82;
       --br:    rgba(24,18,15,0.08);
       --serif: 'Cormorant', Georgia, 'Times New Roman', serif;
@@ -162,31 +162,11 @@
       opacity: 0;
     }
     .hl-1 { animation: fadeUp 0.8s ease 0.2s forwards; }
-    .hl-2 { padding-left: 2rem; animation: fadeUp 0.8s ease 0.32s forwards; }
+    .hl-2 { animation: fadeUp 0.8s ease 0.32s forwards; }
     .hl-3 {
       font-size: clamp(5rem, 9.8vw, 12.5rem);
       font-weight: 200; color: var(--rose);
-      padding-left: 4rem;
       animation: fadeUp 0.8s ease 0.44s forwards;
-      position: relative;
-      height: 1em;
-      overflow: hidden;
-    }
-    .hl-word {
-      position: absolute; top: 0; left: 0;
-      opacity: 0;
-      transform: translateY(0.7em);
-      transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-      white-space: nowrap;
-    }
-    .hl-word.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hl-word.exit {
-      opacity: 0;
-      transform: translateY(-0.6em);
-      transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.55, 0, 0.45, 1);
     }
 
     .hero-sub {
@@ -222,8 +202,7 @@
       .hero-r img { height: 56vw; }
       .hero-l { padding: 3rem 1.5rem 4rem; border-right: none; border-top: 1px solid var(--br); }
       .hl { font-size: clamp(3rem, 10.5vw, 4.8rem); }
-      .hl-2 { padding-left: 1.2rem; }
-      .hl-3 { padding-left: 2.4rem; font-size: clamp(3.4rem, 11.5vw, 5.2rem); }
+      .hl-3 { font-size: clamp(3.4rem, 11.5vw, 5.2rem); }
       .hero-stats { display: none; }
     }
     .btn-dark {
@@ -1037,13 +1016,7 @@
     <h1 class="hero-h1">
       <span class="hl hl-1">Farbe.</span>
       <span class="hl hl-2">Gefühl.</span>
-      <span class="hl hl-3" id="hero-cycle">
-        <span class="hl-word">Unikat.</span>
-        <span class="hl-word">Seele.</span>
-        <span class="hl-word">Leben.</span>
-        <span class="hl-word">Kraft.</span>
-        <span class="hl-word">Magie.</span>
-      </span>
+      <span class="hl hl-3">Unikat.</span>
     </h1>
     <p class="hero-sub">
       Abstrakte Originalwerke, die Räume verwandeln.
@@ -1429,22 +1402,6 @@
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 40), { passive: true });
-
-  /* Animated hero word cycle */
-  (function () {
-    const words = document.querySelectorAll('#hero-cycle .hl-word');
-    let current = 0;
-    words[0].classList.add('active');
-    function cycle() {
-      const prev = current;
-      current = (current + 1) % words.length;
-      words[prev].classList.remove('active');
-      words[prev].classList.add('exit');
-      words[current].classList.add('active');
-      setTimeout(() => words[prev].classList.remove('exit'), 500);
-    }
-    setTimeout(() => setInterval(cycle, 2000), 1400);
-  })();
 
   /* Liquid glass CTAs */
   function applyGlass(el, dark) {
