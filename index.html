@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>b.malt – Britta Heinze | Abstrakte Kunst · Münsterland</title>
+  <meta name="description" content="Abstrakte Originalwerke von Britta Heinze – handgefertigt im Münsterland. 12.900 Follower, über 500 Werke. Auftragsarbeiten auf Anfrage.">
+  <link rel="canonical" href="https://b-malt.de/">
+  <style>
+    @font-face {
+      font-family: 'Cormorant';
+      src: url('fonts/cormorant-300-normal.woff2') format('woff2');
+      font-weight: 300; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant';
+      src: url('fonts/cormorant-400-normal.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant';
+      src: url('fonts/cormorant-600-normal.woff2') format('woff2');
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant';
+      src: url('fonts/cormorant-300-italic.woff2') format('woff2');
+      font-weight: 300; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant';
+      src: url('fonts/cormorant-400-italic.woff2') format('woff2');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant';
+      src: url('fonts/cormorant-600-italic.woff2') format('woff2');
+      font-weight: 600; font-style: italic; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Instrument';
+      src: url('fonts/instrument-normal.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Instrument';
+      src: url('fonts/instrument-italic.woff2') format('woff2');
+      font-weight: 400; font-style: italic; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:    #FEFDFB;
+      --bg2:   #F4E8E3;
+      --txt:   #18120F;
+      --mut:   #7A6860;
+      --rose:  #BF7070;
+      --sage:  #7A9C82;
+      --br:    rgba(24,18,15,0.08);
+      --serif: 'Cormorant', Georgia, 'Times New Roman', serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--txt);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 58px; display: flex; align-items: center;
+      transition: background 0.35s, border-color 0.35s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.on {
+      background: rgba(254,253,249,0.94);
+      backdrop-filter: blur(20px);
+      border-color: var(--br);
+    }
+    .ni {
+      width: 100%; max-width: 1200px; margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.25rem; font-weight: 400; letter-spacing: 0.04em;
+    }
+    .logo em { color: var(--rose); font-style: normal; }
+    .nav-ig {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mut);
+      transition: color 0.2s;
+    }
+    .nav-ig:hover { color: var(--txt); }
+    @media(max-width:600px){ .ni { padding: 0 1.5rem; } }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 58% 1fr;
+      overflow: hidden;
+    }
+    .hero-glow { display: none; }
+
+    .hero-l {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 8rem 5rem 5rem 3.5rem;
+      position: relative;
+      border-right: 1px solid var(--br);
+    }
+    .hero-r {
+      position: relative; overflow: hidden;
+      background: var(--bg2);
+    }
+    .hero-r img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 15%;
+      display: block;
+    }
+    .hero-r::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(253,252,248,0.15) 0%, transparent 25%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.59rem; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--mut);
+      margin-bottom: 3.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+    .eyebrow::before {
+      content: ''; display: block;
+      width: 36px; height: 1px;
+      background: var(--rose); flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: 'Instrument', Georgia, serif;
+      font-weight: 400; line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 3.5rem;
+    }
+    .hl {
+      display: block;
+      font-size: clamp(4.5rem, 8.8vw, 11rem);
+      font-weight: 400;
+      color: var(--txt);
+      opacity: 0;
+    }
+    .hl-1 { animation: fadeUp 0.8s ease 0.2s forwards; }
+    .hl-2 { padding-left: 2rem; animation: fadeUp 0.8s ease 0.32s forwards; }
+    .hl-3 {
+      font-size: clamp(5rem, 9.8vw, 12.5rem);
+      font-weight: 400; font-style: italic; color: var(--rose);
+      padding-left: 4rem;
+      animation: fadeUp 0.8s ease 0.44s forwards;
+    }
+
+    .hero-sub {
+      font-size: 0.97rem; color: var(--mut);
+      line-height: 1.9; max-width: 370px;
+      margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 0.8s ease 0.56s forwards;
+    }
+    .ctas {
+      display: flex; align-items: center;
+      gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s ease 0.68s forwards;
+    }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; align-items: flex-start;
+      margin-top: 4.5rem; padding-top: 2.5rem;
+      border-top: 1px solid var(--br);
+      opacity: 0; animation: fadeUp 0.8s ease 0.82s forwards;
+    }
+    .hs-n {
+      font-family: var(--serif); font-size: 1.3rem;
+      font-weight: 400; line-height: 1; color: var(--txt);
+    }
+    .hs-l {
+      font-size: 0.59rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mut); margin-top: 4px;
+    }
+
+    @media(max-width:900px){
+      .hero { grid-template-columns: 1fr; grid-template-rows: 56vw auto; min-height: auto; }
+      .hero-r { order: -1; }
+      .hero-r img { height: 56vw; }
+      .hero-l { padding: 3rem 1.5rem 4rem; border-right: none; border-top: 1px solid var(--br); }
+      .hl { font-size: clamp(3rem, 10.5vw, 4.8rem); }
+      .hl-2 { padding-left: 1.2rem; }
+      .hl-3 { padding-left: 2.4rem; font-size: clamp(3.4rem, 11.5vw, 5.2rem); }
+      .hero-stats { display: none; }
+    }
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--txt);
+      padding: 1rem 2.25rem;
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mut);
+      padding: 1rem 2.25rem;
+    }
+
+    /* ── LIQUID GLASS BUTTONS ── */
+    .liq-btn {
+      position: relative !important;
+      background: transparent !important;
+      border-color: transparent !important;
+      border-radius: 9999px !important;
+      overflow: visible !important;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+    .liq-btn:hover {
+      transform: scale(1.05) !important;
+      background: transparent !important;
+    }
+    .liq-glass {
+      position: absolute; inset: 0;
+      border-radius: 9999px;
+      overflow: hidden; pointer-events: none;
+      -webkit-backdrop-filter: blur(14px) url('#bmalt-glass');
+      backdrop-filter: blur(14px) url('#bmalt-glass');
+    }
+    .liq-bubble {
+      position: absolute; inset: 0;
+      border-radius: 9999px; pointer-events: none;
+      box-shadow:
+        0 0 6px rgba(0,0,0,0.03),
+        0 2px 6px rgba(0,0,0,0.08),
+        inset 3px 3px 0.5px -3px rgba(0,0,0,0.9),
+        inset -3px -3px 0.5px -3px rgba(0,0,0,0.85),
+        inset 1px 1px 1px -0.5px rgba(0,0,0,0.6),
+        inset -1px -1px 1px -0.5px rgba(0,0,0,0.6),
+        inset 0 0 6px 6px rgba(0,0,0,0.12),
+        inset 0 0 2px 2px rgba(0,0,0,0.06),
+        0 0 12px rgba(255,255,255,0.15);
+    }
+    .liq-bubble-dark {
+      position: absolute; inset: 0;
+      border-radius: 9999px; pointer-events: none;
+      box-shadow:
+        0 0 8px rgba(0,0,0,0.03),
+        0 2px 6px rgba(0,0,0,0.08),
+        inset 3px 3px 0.5px -3.5px rgba(255,255,255,0.09),
+        inset -3px -3px 0.5px -3.5px rgba(255,255,255,0.85),
+        inset 1px 1px 1px -0.5px rgba(255,255,255,0.6),
+        inset -1px -1px 1px -0.5px rgba(255,255,255,0.6),
+        inset 0 0 6px 6px rgba(255,255,255,0.12),
+        inset 0 0 2px 2px rgba(255,255,255,0.06),
+        0 0 12px rgba(0,0,0,0.15);
+    }
+    .liq-inner {
+      position: relative; z-index: 10;
+      display: inline-flex; align-items: center; gap: 8px;
+      pointer-events: none;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MARQUEE STRIP ── */
+    .strip {
+      background: var(--txt);
+      overflow: hidden; padding: 0.9rem 0;
+    }
+    .strip-track {
+      display: flex; align-items: center; gap: 2.5rem;
+      white-space: nowrap; width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .strip-item {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+    }
+    .strip-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── SHARED SECTION STYLES ── */
+    .s-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--rose); margin-bottom: 1rem;
+    }
+    .s-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400; line-height: 1.1; letter-spacing: -0.02em;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-s {
+      padding: 8rem 2.5rem;
+      background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .gal-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,121,106,0.06) 0%, transparent 70%);
+    }
+    .s-head { text-align: center; margin-bottom: 4rem; position: relative; z-index: 1; }
+    .gal-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      max-width: 860px; margin: 0 auto;
+      height: 540px;
+    }
+    .gi { overflow: hidden; cursor: pointer; }
+    .gi-main { grid-row: 1 / 3; }
+    .gi img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .gi:hover img { transform: scale(1.04); }
+    .gal-footer {
+      text-align: center; margin-top: 2.5rem;
+      font-size: 0.75rem; color: var(--mut);
+      position: relative; z-index: 1;
+    }
+    .gal-footer a {
+      color: var(--rose);
+      border-bottom: 1px solid rgba(184,120,104,0.3); padding-bottom: 1px;
+    }
+    @media(max-width:680px){
+      .gal-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        height: auto;
+      }
+      .gi-main { grid-row: auto; }
+      .gi img { height: 200px; }
+    }
+
+    /* ── ABOUT ── */
+    .about-s {
+      padding: 8rem 2.5rem;
+      background: var(--bg2);
+      position: relative; overflow: hidden;
+    }
+    .about-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 55% 70% at 85% 50%, rgba(139,155,138,0.09) 0%, transparent 70%);
+    }
+    .about-inner {
+      max-width: 1050px; margin: 0 auto;
+      display: grid; grid-template-columns: 300px 1fr;
+      gap: 7rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .about-portrait { overflow: hidden; aspect-ratio: 3/4; }
+    .about-portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 8%;
+    }
+    .about-quote {
+      font-family: var(--serif); font-style: italic;
+      font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+      line-height: 1.65; color: var(--txt);
+      border-left: 2px solid var(--rose);
+      padding-left: 1.75rem; margin-bottom: 2.5rem;
+    }
+    .about-p { font-size: 0.95rem; color: var(--mut); line-height: 1.9; margin-bottom: 1.4rem; }
+    .about-p strong { color: var(--txt); font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 2rem; }
+    .chip {
+      font-size: 0.67rem; letter-spacing: 0.06em;
+      border: 1px solid var(--br); border-radius: 999px;
+      padding: 0.27rem 0.9rem; color: var(--mut);
+    }
+    @media(max-width:860px){
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-portrait { max-width: 240px; }
+    }
+
+    /* ── TESTIMONIALS ── */
+    .test-s {
+      padding: 8rem 2.5rem;
+      background: var(--bg2);
+      position: relative; overflow: hidden;
+    }
+    .test-glow {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(196,121,106,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 80% 50%, rgba(139,155,138,0.07) 0%, transparent 65%);
+    }
+    .test-head {
+      text-align: center; margin-bottom: 3.5rem;
+      position: relative; z-index: 1;
+    }
+    .test-cols {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; gap: 1.25rem;
+      max-height: 700px; overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+    .tcol { width: 285px; flex-shrink: 0; }
+    .ttrack {
+      display: flex; flex-direction: column; gap: 1.1rem;
+      animation: scrollUp var(--d, 22s) linear infinite;
+    }
+    @keyframes scrollUp {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+    .tc {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--br);
+      border-radius: 14px;
+      padding: 1.4rem;
+      box-shadow: 0 2px 18px rgba(26,23,20,0.06);
+    }
+    .tc-stars { color: var(--rose); font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+    .tc-text {
+      font-family: var(--serif); font-style: italic;
+      font-size: 0.9rem; line-height: 1.75; color: var(--txt);
+      margin-bottom: 0.9rem;
+    }
+    .tc-text::before { content: '\201E'; }
+    .tc-text::after  { content: '\201C'; }
+    .tc-from {
+      font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--rose);
+    }
+    /* middle column — images + text */
+    .tcol-mid { width: 285px; flex-shrink: 0; }
+    .tc-img {
+      overflow: hidden; border-radius: 14px;
+      border: 1px solid var(--br);
+      box-shadow: 0 2px 18px rgba(26,23,20,0.06);
+    }
+    .tc-img img { width: 100%; display: block; object-fit: cover; max-height: 240px; }
+
+    @media(max-width:960px){ .test-cols > *:nth-child(3) { display: none; } }
+    @media(max-width:640px){
+      .test-cols > *:nth-child(2) { display: none; }
+      .tcol, .tcol-mid { width: 100%; max-width: 340px; }
+    }
+
+    /* ── CTA ── */
+    .cta-s {
+      padding: 9rem 2.5rem;
+      background: var(--txt);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 55% 55% at 50% 50%, rgba(255,249,145,0.13) 0%, transparent 70%);
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 580px; margin: 0 auto; }
+    .cta-tag {
+      display: inline-block;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.24em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+      margin-bottom: 2rem;
+    }
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 400; line-height: 1.12;
+      letter-spacing: -0.02em; color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .cta-p { font-size: 0.95rem; color: rgba(255,255,255,0.42); line-height: 1.85; margin-bottom: 3rem; }
+    .btn-rose {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.9);
+      padding: 1.15rem 2.75rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--txt);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2.25rem 2.5rem;
+    }
+    .foot-i {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .foot-logo { font-family: var(--serif); font-size: 1.15rem; color: rgba(255,255,255,0.5); }
+    .foot-logo em { color: var(--rose); font-style: normal; }
+    .foot-copy { font-size: 0.65rem; color: rgba(255,255,255,0.2); letter-spacing: 0.04em; }
+    .foot-copy a { color: rgba(255,255,255,0.2); }
+    .foot-copy a:hover { color: rgba(255,255,255,0.45); }
+
+    /* ── INSTAGRAM SECTION ── */
+    .ig-s {
+      padding: 8rem 2.5rem;
+      background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .ig-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 480px;
+      gap: 6rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .ig-text .s-tag { margin-bottom: 1rem; }
+    .ig-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 400; line-height: 1.08;
+      letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+    .ig-h2 em { font-style: italic; color: var(--rose); }
+    .ig-p { font-size: 0.95rem; color: var(--mut); line-height: 1.9; margin-bottom: 1rem; }
+    .ig-p strong { color: var(--txt); font-weight: 600; }
+    .ig-stats-row {
+      display: flex; gap: 2.5rem;
+      padding: 1.75rem 0; margin: 1.75rem 0;
+      border-top: 1px solid var(--br); border-bottom: 1px solid var(--br);
+    }
+    .ig-stat-n {
+      font-family: var(--serif); font-size: 1.4rem;
+      font-weight: 400; color: var(--txt); line-height: 1;
+    }
+    .ig-stat-l {
+      font-size: 0.59rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mut); margin-top: 4px;
+    }
+    .btn-ig {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--txt);
+      padding: 1rem 2.25rem;
+      margin-top: 1rem;
+    }
+
+    /* Instagram feed grid */
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 6px;
+      height: 480px;
+    }
+    .ig-cell {
+      overflow: hidden; cursor: pointer; position: relative;
+      background: var(--bg2);
+    }
+    .ig-cell img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      display: block;
+    }
+    .ig-cell:hover img { transform: scale(1.07); }
+    .ig-cell-overlay {
+      position: absolute; inset: 0;
+      background: rgba(24,18,15,0.38);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .ig-cell:hover .ig-cell-overlay { opacity: 1; }
+    .ig-cell-overlay svg { color: #fff; }
+
+    /* Profile badge floating over grid */
+    .ig-profile-badge {
+      position: absolute;
+      bottom: -18px; left: -18px;
+      background: #fff;
+      border: 1px solid var(--br);
+      border-radius: 16px;
+      padding: 0.9rem 1.2rem;
+      display: flex; align-items: center; gap: 0.85rem;
+      box-shadow: 0 8px 30px rgba(24,18,15,0.10);
+      z-index: 10; width: max-content;
+    }
+    .ig-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+      border: 2px solid var(--rose);
+    }
+    .ig-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .ig-badge-name {
+      font-size: 0.78rem; font-weight: 700; color: var(--txt);
+      line-height: 1; margin-bottom: 2px;
+    }
+    .ig-badge-sub {
+      font-size: 0.62rem; color: var(--mut);
+      letter-spacing: 0.04em;
+    }
+    .ig-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
+
+    @media(max-width:960px){
+      .ig-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+      .ig-grid { height: 320px; }
+      .ig-profile-badge { bottom: -14px; left: 10px; }
+    }
+    @media(max-width:480px){
+      .ig-grid { height: 240px; gap: 4px; }
+    }
+
+    /* ── CINEMATIC HERO ── */
+    #cinematic-hero { display: none; }
+    .ch-film-grain {
+      position: absolute; inset: 0; pointer-events: none; z-index: 50;
+      opacity: 0.03; mix-blend-mode: overlay;
+      background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+    .ch-bg-grid {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5;
+      background-size: 60px 60px;
+      background-image:
+        linear-gradient(to right, rgba(24,18,15,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(24,18,15,0.05) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+    }
+    .ch-hero-text-wrapper {
+      position: absolute; z-index: 10; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      width: 100%; padding: 0 2rem; will-change: transform;
+    }
+    .ch-text-track {
+      font-family: 'Instrument', Georgia, serif;
+      font-size: clamp(3.2rem, 6.5vw, 7.5rem);
+      font-weight: 400; color: var(--txt);
+      letter-spacing: -0.03em; line-height: 1;
+      opacity: 0;
+      text-shadow: 0 10px 30px rgba(24,18,15,0.12);
+      margin-bottom: 0.05em;
+    }
+    .ch-text-days {
+      font-family: 'Instrument', Georgia, serif;
+      font-size: clamp(3.8rem, 8vw, 9.5rem);
+      font-weight: 400; font-style: italic; color: var(--rose);
+      letter-spacing: -0.03em; line-height: 1;
+      clip-path: inset(0 100% 0 0);
+      filter: drop-shadow(0 10px 20px rgba(168,104,114,0.18));
+    }
+    /* CTA (appears at end of scroll journey) */
+    .ch-cta-wrapper {
+      position: absolute; z-index: 10; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      width: 100%; padding: 0 2rem; opacity: 0; pointer-events: none;
+      will-change: transform;
+    }
+    .ch-cta-wrapper.ch-active { pointer-events: auto; }
+    .ch-cta-h {
+      font-family: 'Instrument', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      font-weight: 400; font-style: italic; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.08; margin-bottom: 1.2rem;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    }
+    .ch-cta-p {
+      font-size: 0.97rem; color: rgba(255,255,255,0.42);
+      line-height: 1.85; max-width: 460px; margin: 0 auto 2.5rem;
+    }
+    .ch-cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .ch-btn-ig {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.92);
+      padding: 1rem 2.25rem;
+    }
+    .ch-btn-mail {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.92);
+      padding: 1rem 2.25rem;
+    }
+    /* Card */
+    .ch-card-layer {
+      position: absolute; inset: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; perspective: 1500px;
+    }
+    .ch-main-card {
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: auto;
+      width: 92vw; height: 92svh; border-radius: 32px;
+      background: linear-gradient(145deg, #2C1A18 0%, #18120F 100%);
+      box-shadow:
+        0 40px 100px -20px rgba(0,0,0,0.9), 0 20px 40px -20px rgba(0,0,0,0.8),
+        inset 0 1px 2px rgba(255,255,255,0.1), inset 0 -2px 4px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    @media(min-width:768px){ .ch-main-card { width: 85vw; height: 85svh; border-radius: 40px; } }
+    .ch-card-sheen {
+      position: absolute; inset: 0; border-radius: inherit;
+      pointer-events: none; z-index: 50;
+      background: radial-gradient(800px circle at var(--ch-mx,50%) var(--ch-my,50%), rgba(168,104,114,0.06) 0%, transparent 40%);
+      mix-blend-mode: screen;
+    }
+    .ch-card-inner {
+      position: relative; width: 100%; height: 100%;
+      max-width: 1200px; margin: 0 auto; padding: 1.5rem 1rem;
+      display: flex; flex-direction: column;
+      justify-content: space-evenly; align-items: center; z-index: 10;
+    }
+    @media(min-width:1024px){
+      .ch-card-inner {
+        display: grid; grid-template-columns: 1fr 300px 1fr;
+        gap: 2rem; padding: 0 3rem; align-items: center;
+      }
+    }
+    /* Left text */
+    .ch-card-left { opacity: 0; text-align: center; order: 3; }
+    @media(min-width:1024px){ .ch-card-left { text-align: left; order: 1; display: flex; flex-direction: column; justify-content: center; } }
+    .ch-card-tag {
+      font-size: 0.59rem; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--rose); margin-bottom: 1rem;
+    }
+    .ch-card-h3 {
+      font-family: 'Instrument', Georgia, serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      font-weight: 400; font-style: italic; color: #fff;
+      line-height: 1.1; margin-bottom: 0.9rem;
+      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.65) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .ch-card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.38); line-height: 1.85; display: none; }
+    @media(min-width:768px){ .ch-card-desc { display: block; } }
+    /* Mockup center */
+    .ch-mockup-wrapper {
+      order: 2; position: relative; width: 100%; height: 280px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    @media(min-width:768px){ .ch-mockup-wrapper { height: 500px; } }
+    .ch-mockup-inner {
+      opacity: 0; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      transform: scale(0.55);
+      transform-style: preserve-3d;
+    }
+    @media(min-width:768px){ .ch-mockup-inner { transform: scale(0.78); } }
+    @media(min-width:1024px){ .ch-mockup-inner { transform: scale(1); } }
+    /* iPhone */
+    .ch-iphone {
+      position: relative; width: 280px; height: 580px; border-radius: 3rem;
+      background: #111;
+      box-shadow: inset 0 0 0 2px #52525B, inset 0 0 0 7px #000,
+        0 40px 80px -15px rgba(0,0,0,0.9), 0 15px 25px -5px rgba(0,0,0,0.7);
+      transform-style: preserve-3d; will-change: transform;
+    }
+    .ch-hw-btn {
+      position: absolute;
+      background: linear-gradient(90deg, #404040 0%, #171717 100%);
+      box-shadow: -2px 0 5px rgba(0,0,0,0.8), inset -1px 0 1px rgba(255,255,255,0.12);
+      border-left: 1px solid rgba(255,255,255,0.04);
+    }
+    .ch-btn-vup { top:120px; left:-3px; width:3px; height:25px; border-radius:2px 0 0 2px; }
+    .ch-btn-vdn { top:160px; left:-3px; width:3px; height:45px; border-radius:2px 0 0 2px; }
+    .ch-btn-mt  { top:220px; left:-3px; width:3px; height:45px; border-radius:2px 0 0 2px; }
+    .ch-btn-pw  { top:170px; right:-3px; width:3px; height:70px; border-radius:0 2px 2px 0; background:linear-gradient(90deg,#171717,#404040); }
+    .ch-screen {
+      position: absolute; inset: 7px; background: #050310;
+      border-radius: 2.5rem; overflow: hidden; color: #fff;
+      box-shadow: inset 0 0 15px rgba(0,0,0,1);
+    }
+    .ch-screen-glare {
+      position: absolute; inset: 0; z-index: 40; pointer-events: none;
+      background: linear-gradient(110deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 45%);
+    }
+    .ch-dynamic-island {
+      position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
+      width: 100px; height: 28px; background: #000; border-radius: 999px; z-index: 50;
+      display: flex; align-items: center; justify-content: flex-end; padding-right: 10px;
+    }
+    .ch-island-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 8px rgba(34,197,94,0.8);
+      animation: ch-pulse 2s ease infinite;
+    }
+    @keyframes ch-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+    /* Instagram UI inside phone */
+    .ch-ig-ui {
+      position: relative; width: 100%; height: 100%;
+      padding: 44px 12px 8px;
+      display: flex; flex-direction: column; gap: 0;
+      overflow: hidden;
+    }
+    .ch-ig-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 10px; opacity: 0;
+    }
+    .ch-ig-avatar-wrap {
+      width: 54px; height: 54px; border-radius: 50%;
+      padding: 2px; flex-shrink: 0;
+      background: linear-gradient(45deg, var(--rose) 0%, #F0A87B 100%);
+    }
+    .ch-ig-avatar {
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; object-position: center 8%;
+      border: 2px solid #050310; display: block;
+    }
+    .ch-ig-handle { font-size: 11px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .ch-ig-bio   { font-size: 9px; color: rgba(255,255,255,0.38); line-height: 1.4; margin-top: 2px; }
+    .ch-ig-stats {
+      display: flex; justify-content: space-between;
+      padding: 8px 4px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 10px; opacity: 0;
+    }
+    .ch-ig-stat-item { text-align: center; }
+    .ch-ig-stat-n { font-size: 13px; font-weight: 700; color: #fff; line-height: 1; }
+    .ch-ig-stat-l { font-size: 8px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+    .ch-ig-photo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+      flex: 1; opacity: 0;
+    }
+    .ch-ig-photo-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; }
+    .ch-home-bar {
+      position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+      width: 100px; height: 4px; background: rgba(255,255,255,0.18); border-radius: 2px;
+    }
+    /* Floating badges */
+    .ch-float-badge {
+      position: absolute; display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.01) 100%);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 20px 40px -8px rgba(0,0,0,0.8),
+        inset 0 1px 1px rgba(255,255,255,0.15);
+      opacity: 0; white-space: nowrap; z-index: 30;
+    }
+    .ch-badge-1 { top: 30px; left: -55px; }
+    .ch-badge-2 { bottom: 55px; right: -55px; }
+    .ch-badge-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(168,104,114,0.15); border: 1px solid rgba(168,104,114,0.3);
+      display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+    }
+    .ch-badge-title { font-size: 12px; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 2px; }
+    .ch-badge-sub   { font-size: 10px; color: rgba(255,255,255,0.38); }
+    /* Right brand name */
+    .ch-card-right { opacity: 0; text-align: center; order: 1; }
+    @media(min-width:1024px){ .ch-card-right { display:flex; justify-content:flex-end; align-items:center; order:3; } }
+    .ch-brand-name {
+      font-family: 'Instrument', Georgia, serif;
+      font-size: clamp(4rem, 7.5vw, 9rem);
+      font-weight: 400; letter-spacing: -0.03em; line-height: 0.9;
+      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.45) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.85)) drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    }
+
+    /* ── REVEALS ── */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .rv.v { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="ni">
+    <a href="#" class="logo">b<em>.</em>malt</a>
+    <a href="https://www.instagram.com/b.malt_" target="_blank" rel="noopener" class="nav-ig">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      @b.malt_
+    </a>
+  </div>
+</nav>
+
+
+<!-- CINEMATIC HERO -->
+<div id="cinematic-hero">
+
+  <div class="ch-film-grain" aria-hidden="true"></div>
+  <div class="ch-bg-grid"   aria-hidden="true"></div>
+
+  <!-- Background text layer -->
+  <div class="ch-hero-text-wrapper">
+    <div class="ch-text-track">Farbe. Gefühl.</div>
+    <div class="ch-text-days">Unikat.</div>
+  </div>
+
+  <!-- End-of-journey CTA -->
+  <div class="ch-cta-wrapper">
+    <h2 class="ch-cta-h">Dein Raum.<br>Deine Farben.</h2>
+    <p class="ch-cta-p">Britta nimmt Auftragsarbeiten an — schreib ihr direkt und lass uns gemeinsam dein Unikat erschaffen.</p>
+    <div class="ch-cta-btns">
+      <a href="https://www.instagram.com/b.malt_" target="_blank" rel="noopener" class="ch-btn-ig">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        @b.malt_ auf Instagram
+      </a>
+      <a href="mailto:britta.heinze@icloud.com" class="ch-btn-mail">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Auftragsarbeit anfragen
+      </a>
+    </div>
+  </div>
+
+  <!-- Deep warm card (slides up on scroll) -->
+  <div class="ch-card-layer">
+    <div id="ch-main-card" class="ch-main-card">
+      <div class="ch-card-sheen"></div>
+
+      <div class="ch-card-inner">
+
+        <!-- Left: description -->
+        <div class="ch-card-left">
+          <div class="ch-card-tag">Abstract Art · Münsterland</div>
+          <h3 class="ch-card-h3">Kunst,<br>die bewegt.</h3>
+          <p class="ch-card-desc">Abstrakte Originalwerke, entstanden mit Leidenschaft — verkauft über Instagram an eine Community von über 12.000 Menschen. Jedes Bild ein echtes Unikat.</p>
+        </div>
+
+        <!-- Center: iPhone mockup -->
+        <div class="ch-mockup-wrapper">
+          <div class="ch-mockup-inner">
+
+            <div id="ch-iphone" class="ch-iphone">
+              <div class="ch-hw-btn ch-btn-vup" aria-hidden="true"></div>
+              <div class="ch-hw-btn ch-btn-vdn" aria-hidden="true"></div>
+              <div class="ch-hw-btn ch-btn-mt"  aria-hidden="true"></div>
+              <div class="ch-hw-btn ch-btn-pw"  aria-hidden="true"></div>
+
+              <div class="ch-screen">
+                <div class="ch-screen-glare" aria-hidden="true"></div>
+                <div class="ch-dynamic-island" aria-hidden="true">
+                  <div class="ch-island-dot"></div>
+                </div>
+                <div class="ch-ig-ui">
+                  <div class="ch-ig-header ch-pw">
+                    <div class="ch-ig-avatar-wrap">
+                      <img src="img/britta.jpg" class="ch-ig-avatar" alt="Britta – b.malt" />
+                    </div>
+                    <div>
+                      <div class="ch-ig-handle">@b.malt_</div>
+                      <div class="ch-ig-bio">Abstrakte Kunst · Münsterland 🌸</div>
+                    </div>
+                  </div>
+                  <div class="ch-ig-stats ch-pw">
+                    <div class="ch-ig-stat-item">
+                      <div class="ch-ig-stat-n">522</div>
+                      <div class="ch-ig-stat-l">Beiträge</div>
+                    </div>
+                    <div class="ch-ig-stat-item">
+                      <div class="ch-ig-stat-n">12,9K</div>
+                      <div class="ch-ig-stat-l">Follower</div>
+                    </div>
+                    <div class="ch-ig-stat-item">
+                      <div class="ch-ig-stat-n" style="color:#A86872">Sold</div>
+                      <div class="ch-ig-stat-l">Letzter Drop</div>
+                    </div>
+                  </div>
+                  <div class="ch-ig-photo-grid ch-pw">
+                    <img src="img/werk-4.jpg"       alt="" loading="lazy" />
+                    <img src="img/werk-5.jpg"       alt="" loading="lazy" />
+                    <img src="img/room-diptych.jpg" alt="" loading="lazy" />
+                    <img src="img/werk-3.jpg"       alt="" loading="lazy" />
+                    <img src="img/werk-2.jpg"       alt="" loading="lazy" />
+                    <img src="img/werk-1.jpg"       alt="" loading="lazy" />
+                  </div>
+                  <div class="ch-home-bar" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating badges -->
+            <div class="ch-float-badge ch-badge-1">
+              <div class="ch-badge-icon">❤️</div>
+              <div>
+                <div class="ch-badge-title">12.900 Follower</div>
+                <div class="ch-badge-sub">@b.malt_ Community</div>
+              </div>
+            </div>
+            <div class="ch-float-badge ch-badge-2">
+              <div class="ch-badge-icon">🎨</div>
+              <div>
+                <div class="ch-badge-title">Sold Out</div>
+                <div class="ch-badge-sub">Letzter Drop</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: brand name -->
+        <div class="ch-card-right">
+          <div class="ch-brand-name">b.malt</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-l">
+    <div class="eyebrow">Abstract Art · Münsterland · Handgefertigt</div>
+    <h1 class="hero-h1">
+      <span class="hl hl-1">Farbe.</span>
+      <span class="hl hl-2">Gefühl.</span>
+      <span class="hl hl-3">Unikat.</span>
+    </h1>
+    <p class="hero-sub">
+      Abstrakte Originalwerke, die Räume verwandeln.
+      Jedes Bild ein echtes Unikat — vom Keilrahmen bis zur finalen Rahmung.
+    </p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/b.malt_" target="_blank" rel="noopener" class="btn-dark">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        Werke entdecken
+      </a>
+      <a href="#auftrag" class="btn-ghost">Auftragsarbeit anfragen</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hs-n">12.900+</div>
+        <div class="hs-l">Follower</div>
+      </div>
+      <div>
+        <div class="hs-n">522</div>
+        <div class="hs-l">Werke</div>
+      </div>
+      <div>
+        <div class="hs-n">DE · AT · CH</div>
+        <div class="hs-l">Käuferinnen</div>
+      </div>
+      <div>
+        <div class="hs-n" style="color:var(--rose);font-size:1.1rem;">★★★★★</div>
+        <div class="hs-l">Kundenstimmen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-r">
+    <img src="img/werk-1.jpg" alt="Abstraktes Originalwerk von Britta Heinze" />
+  </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+<div class="strip">
+  <div class="strip-track">
+    <span class="strip-item">Abstract Art</span><span class="strip-dot"></span>
+    <span class="strip-item">Handgefertigt im Münsterland</span><span class="strip-dot"></span>
+    <span class="strip-item">12.900 Follower</span><span class="strip-dot"></span>
+    <span class="strip-item">Jedes Bild ein Unikat</span><span class="strip-dot"></span>
+    <span class="strip-item">Sold 25 von 26</span><span class="strip-dot"></span>
+    <span class="strip-item">Auftragsarbeiten auf Anfrage</span><span class="strip-dot"></span>
+    <span class="strip-item">Farben, die tanzen</span><span class="strip-dot"></span>
+    <span class="strip-item">b.malt_</span><span class="strip-dot"></span>
+    <!-- duplicate -->
+    <span class="strip-item">Abstract Art</span><span class="strip-dot"></span>
+    <span class="strip-item">Handgefertigt im Münsterland</span><span class="strip-dot"></span>
+    <span class="strip-item">12.900 Follower</span><span class="strip-dot"></span>
+    <span class="strip-item">Jedes Bild ein Unikat</span><span class="strip-dot"></span>
+    <span class="strip-item">Sold 25 von 26</span><span class="strip-dot"></span>
+    <span class="strip-item">Auftragsarbeiten auf Anfrage</span><span class="strip-dot"></span>
+    <span class="strip-item">Farben, die tanzen</span><span class="strip-dot"></span>
+    <span class="strip-item">b.malt_</span><span class="strip-dot"></span>
+  </div>
+</div>
+
+
+<!-- INSTAGRAM COMMUNITY -->
+<section class="ig-s" id="community">
+  <div class="ig-inner">
+
+    <!-- Left: text -->
+    <div class="ig-text rv">
+      <div class="s-tag">Community</div>
+      <h2 class="ig-h2 rv d1">
+        12.900 Menschen.<br>
+        <em>Eine echte Community.</em>
+      </h2>
+      <p class="ig-p rv d2">
+        Britta verkauft ihre Werke ausschließlich über Instagram — <strong>kein Shop, kein Zwischenhändler, kein Algorithmus-Katalog.</strong> Jeder Drop passiert direkt, persönlich, mit ihrer Community.
+      </p>
+      <p class="ig-p rv d2">
+        In den letzten Jahren ist aus einem Profil eine echte Gemeinschaft geworden: Menschen, die sich auf ihre Posts freuen, die kommentieren, die erzählen wo das Bild jetzt hängt — in Olfen, Wien, Zürich.
+      </p>
+      <div class="ig-stats-row rv d3">
+        <div>
+          <div class="ig-stat-n">12.900+</div>
+          <div class="ig-stat-l">Follower</div>
+        </div>
+        <div>
+          <div class="ig-stat-n">522</div>
+          <div class="ig-stat-l">Werke gepostet</div>
+        </div>
+        <div>
+          <div class="ig-stat-n">DE · AT · CH</div>
+          <div class="ig-stat-l">Käuferinnen</div>
+        </div>
+      </div>
+      <a href="https://www.instagram.com/b.malt_" target="_blank" rel="noopener" class="btn-ig rv d3">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        @b.malt_ auf Instagram
+      </a>
+    </div>
+
+    <!-- Right: feed grid -->
+    <div style="position:relative;" class="rv d2">
+      <div class="ig-grid">
+        <div class="ig-cell">
+          <img src="img/werk-4.jpg" alt="b.malt Werk" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/werk-5.jpg" alt="b.malt Werk" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/room-diptych.jpg" alt="b.malt im Zuhause" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/werk-2.jpg" alt="b.malt Werk" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/room-ines.jpg" alt="b.malt bei Kundin Ines" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/werk-3.jpg" alt="b.malt Werk" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/home-nora.jpg" alt="b.malt im Zuhause" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/home-ines.jpg" alt="b.malt im Zuhause" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+        <div class="ig-cell">
+          <img src="img/werk-1.jpg" alt="b.malt Werk" loading="lazy" />
+          <div class="ig-cell-overlay"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        </div>
+      </div>
+
+      <!-- Floating profile badge -->
+      <div class="ig-profile-badge">
+        <div class="ig-avatar">
+          <img src="img/britta.jpg" alt="Britta Heinze" />
+        </div>
+        <div>
+          <div class="ig-badge-name">@b.malt_</div>
+          <div class="ig-badge-sub">12.900 Follower</div>
+        </div>
+        <div class="ig-badge-dot"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- GALLERY -->
+<section class="gallery-s" id="werke">
+  <div class="gal-glow"></div>
+  <div class="s-head rv">
+    <div class="s-tag">Ausgewählte Werke</div>
+    <h2 class="s-h2 rv d1">Kunst, die in echten Zuhausen lebt</h2>
+  </div>
+  <div class="gal-grid rv d2">
+    <div class="gi gi-main">
+      <img src="img/werk-1.jpg" alt="Abstraktes Originalwerk – b.malt" />
+    </div>
+    <div class="gi">
+      <img src="img/werk-4.jpg" alt="Detail – b.malt" />
+    </div>
+    <div class="gi">
+      <img src="img/werk-3.jpg" alt="Abstraktes Werk – b.malt" />
+    </div>
+  </div>
+  <p class="gal-footer rv d3">
+    Alle Werke auf
+    <a href="https://www.instagram.com/b.malt_" target="_blank" rel="noopener">@b.malt_ auf Instagram →</a>
+  </p>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="test-s" id="stimmen">
+  <div class="test-glow"></div>
+  <div class="test-head">
+    <div class="s-tag rv">Stimmen</div>
+    <h2 class="s-h2 rv d1">Was Kunden sagen</h2>
+  </div>
+
+  <div class="test-cols">
+
+    <!-- Spalte 1 — Textkarten -->
+    <div class="tcol">
+      <div class="ttrack" style="--d:22s">
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Gestern wurde dein wunderschönes Bild geliefert. Es ist in natura noch viel schöner ❤️ — ich bin sehr glücklich und freue mich so sehr. Mein Herz geht auf.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Hallo Britta, wie lange habe ich gesucht um diese Kunst zu finden — genial und wunderschön.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Das tolle Bild kam gestern an und ich bin ganz verliebt. Es sieht in Natura noch viel schöner aus — wow! Es wird sicher nicht das Letzte gewesen sein!!!</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <!-- duplicate for seamless loop -->
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Gestern wurde dein wunderschönes Bild geliefert. Es ist in natura noch viel schöner ❤️ — ich bin sehr glücklich und freue mich so sehr. Mein Herz geht auf.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Hallo Britta, wie lange habe ich gesucht um diese Kunst zu finden — genial und wunderschön.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Das tolle Bild kam gestern an und ich bin ganz verliebt. Es sieht in Natura noch viel schöner aus — wow! Es wird sicher nicht das Letzte gewesen sein!!!</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spalte 2 — Bilder + Textkarten -->
+    <div class="tcol-mid">
+      <div class="ttrack" style="--d:17s">
+        <div class="tc-img"><img src="img/room-diptych.jpg" alt="Zweiteiliges Werk im neuen Zuhause" /></div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Es ist daaaaa! Und es ist noch viel schöner in live!!! Ich hab sooo eine große Freude — mit fast 30 ist es die beste Investition meines Lebens gewesen.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc-img"><img src="img/room-ines.jpg" alt="Werk bei Ines, Österreich" /></div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Endlich habe ich eines deiner Bilder bei mir zu Hause. Es berührt mich tief und fängt etwas in mir ein, das ich kaum in Worte fassen kann. Deine Kunst begleitet mich schon lange.</p>
+          <div class="tc-from">Ines · Österreich</div>
+        </div>
+        <!-- duplicate -->
+        <div class="tc-img"><img src="img/room-diptych.jpg" alt="Zweiteiliges Werk im neuen Zuhause" /></div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Es ist daaaaa! Und es ist noch viel schöner in live!!! Ich hab sooo eine große Freude — mit fast 30 ist es die beste Investition meines Lebens gewesen.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc-img"><img src="img/room-ines.jpg" alt="Werk bei Ines, Österreich" /></div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Endlich habe ich eines deiner Bilder bei mir zu Hause. Es berührt mich tief und fängt etwas in mir ein, das ich kaum in Worte fassen kann. Deine Kunst begleitet mich schon lange.</p>
+          <div class="tc-from">Ines · Österreich</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spalte 3 — Textkarten -->
+    <div class="tcol">
+      <div class="ttrack" style="--d:26s">
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Liebe Britta, wow — ich liebe deine Bilder! Habe dein Profil entdeckt und bin begeistert. Wie lange habe ich nach sowas gesucht.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Das Bild ist angekommen und es ist wunderschön. Jetzt muss ich nur noch den richtigen Platz finden 😊</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Wir haben gerade das wunderschöne Bild ausgepackt — es wirkt in echt nochmal viel mehr als wir erwartet hatten.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Dieses zweiteilige, farbenfrohe Bild hat ein schönes neues Zuhause gefunden. So toll, wenn Kunst genau da landet, wo sie hingehört.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <!-- duplicate -->
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Liebe Britta, wow — ich liebe deine Bilder! Habe dein Profil entdeckt und bin begeistert. Wie lange habe ich nach sowas gesucht.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Das Bild ist angekommen und es ist wunderschön. Jetzt muss ich nur noch den richtigen Platz finden 😊</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Wir haben gerade das wunderschöne Bild ausgepackt — es wirkt in echt nochmal viel mehr als wir erwartet hatten.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+        <div class="tc">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">Dieses zweiteilige, farbenfrohe Bild hat ein schönes neues Zuhause gefunden. So toll, wenn Kunst genau da landet, wo sie hingehört.</p>
+          <div class="tc-from">Kundin</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about-s" id="ueber">
+  <div class="about-glow"></div>
+  <div class="about-inner">
+    <div class="about-portrait rv">
+      <img src="img/britta.jpg" alt="Britta Heinze – b.malt" />
+    </div>
+    <div class="rv d2">
+      <div class="s-tag">Über Britta</div>
+      <p class="about-quote">
+        „Das Leben ist zu kurz für schlechte Laune — das steckt in jedem meiner Bilder."
+      </p>
+      <p class="about-p">
+        Ich bin Britta — <strong>freischaffende Künstlerin</strong> aus dem Münsterland.
+        Glücklich verheiratet, 3-fache Mama, und ich male, weil ich nicht anders kann.
+      </p>
+      <p class="about-p">
+        Nach einer schweren Erkrankung habe ich die Notbremse gezogen und den Schritt
+        in die Selbstständigkeit gewagt. Seitdem entstehen abstrakte Originalwerke,
+        die <strong>in echten Zuhausen ein Zuhause finden</strong>.
+      </p>
+      <p class="about-p">
+        Ich bin ein Flowergirl, detailverliebt — und meine Ideen gehen mir nie aus.
+      </p>
+      <div class="chips">
+        <span class="chip">Abstract Art</span>
+        <span class="chip">Münsterland</span>
+        <span class="chip">Handgefertigt</span>
+        <span class="chip">Farbfreudig</span>
+        <span class="chip">Unikate</span>
+        <span class="chip">Auftragsarbeiten</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COMMISSIONED CTA -->
+<section class="cta-s" id="auftrag">
+  <div class="cta-glow"></div>
+  <div class="cta-inner rv">
+    <span class="cta-tag">Auftragsarbeiten</span>
+    <h2 class="cta-h2">Dein Raum.<br>Deine Farben.<br>Dein Unikat.</h2>
+    <p class="cta-p">
+      Du möchtest ein Bild, das perfekt zu dir und deinem Zuhause passt?
+      Britta nimmt Auftragsarbeiten an — schreib ihr einfach.
+    </p>
+    <a href="mailto:britta.heinze@icloud.com" class="btn-rose">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+      britta.heinze@icloud.com
+    </a>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-i">
+    <div class="foot-logo">b<em>.</em>malt</div>
+    <div class="foot-copy">
+      © 2026 b.malt – Britta Heinze ·
+      <a href="https://www.instagram.com/b.malt_" target="_blank" rel="noopener">@b.malt_</a> ·
+      <a href="impressum.html">Impressum</a> ·
+      <a href="datenschutz.html">Datenschutz</a> ·
+      Website von <a href="https://jonahheinze.de">Jonah Heinze</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 40), { passive: true });
+
+  /* Liquid glass CTAs */
+  function applyGlass(el, dark) {
+    el.classList.add('liq-btn');
+    const inner = document.createElement('span');
+    inner.className = 'liq-inner';
+    while (el.firstChild) inner.appendChild(el.firstChild);
+    const glass = document.createElement('span');
+    glass.className = 'liq-glass';
+    glass.setAttribute('aria-hidden', 'true');
+    const bubble = document.createElement('span');
+    bubble.className = dark ? 'liq-bubble-dark' : 'liq-bubble';
+    bubble.setAttribute('aria-hidden', 'true');
+    el.appendChild(glass);
+    el.appendChild(bubble);
+    el.appendChild(inner);
+  }
+  document.querySelectorAll('.btn-dark, .btn-ghost, .btn-ig').forEach(el => applyGlass(el, false));
+  document.querySelectorAll('.btn-rose, .ch-btn-ig, .ch-btn-mail').forEach(el => applyGlass(el, true));
+
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  /* (cinematic hero removed) */
+  if (false) { (function () {
+    const _noop = true;
+
+    const hero   = document.getElementById('cinematic-hero');
+    const card   = document.getElementById('ch-main-card');
+    const iphone = document.getElementById('ch-iphone');
+    const raf    = { id: 0 };
+    const isMob  = window.innerWidth < 768;
+
+    /* Mouse → card sheen + iPhone tilt */
+    window.addEventListener('mousemove', (e) => {
+      if (window.scrollY > window.innerHeight * 2) return;
+      cancelAnimationFrame(raf.id);
+      raf.id = requestAnimationFrame(() => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--ch-mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--ch-my', (e.clientY - r.top)  + 'px');
+        const xv = (e.clientX / window.innerWidth  - 0.5) * 2;
+        const yv = (e.clientY / window.innerHeight - 0.5) * 2;
+        gsap.to(iphone, { rotationY: xv * 10, rotationX: -yv * 10, ease: 'power3.out', duration: 1.2 });
+      });
+    });
+
+    /* Initial states */
+    gsap.set('.ch-text-track',   { opacity: 0, y: 60, scale: 0.85, filter: 'blur(20px)', rotationX: -20 });
+    gsap.set('.ch-text-days',    { clipPath: 'inset(0 100% 0 0)' });
+    gsap.set('#ch-main-card',    { y: window.innerHeight + 200 });
+    gsap.set('.ch-card-left',    { opacity: 0 });
+    gsap.set('.ch-card-right',   { opacity: 0 });
+    gsap.set('.ch-mockup-inner', { opacity: 0 });
+    gsap.set('.ch-float-badge',  { opacity: 0 });
+    gsap.set('.ch-ig-header',    { opacity: 0 });
+    gsap.set('.ch-ig-stats',     { opacity: 0 });
+    gsap.set('.ch-ig-photo-grid',{ opacity: 0 });
+    gsap.set('.ch-cta-wrapper',  { opacity: 0, scale: 0.8, filter: 'blur(30px)' });
+
+    /* Intro animation (on load) */
+    gsap.timeline({ delay: 0.25 })
+      .to('.ch-text-track', { duration: 1.8, opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', rotationX: 0, ease: 'expo.out' })
+      .to('.ch-text-days',  { duration: 1.4, clipPath: 'inset(0 0% 0 0)', ease: 'power4.inOut' }, '-=1.0');
+
+    /* Scroll-driven timeline */
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: '+=7000',
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+      }
+    });
+
+    tl
+      /* Phase 1 — background text recedes, card rises from below */
+      .to(['.ch-hero-text-wrapper', '.ch-bg-grid'], {
+        scale: 1.15, filter: 'blur(20px)', opacity: 0.15, ease: 'power2.inOut', duration: 2
+      }, 0)
+      .to('#ch-main-card', { y: 0, ease: 'power3.inOut', duration: 2 }, 0)
+
+      /* Phase 2 — card expands to full screen */
+      .to('#ch-main-card', { width: '100%', height: '100%', borderRadius: '0px', ease: 'power3.inOut', duration: 1.5 })
+
+      /* Phase 3 — iPhone mockup flies in (3D, from below) */
+      .fromTo('.ch-mockup-inner',
+        { y: 300, z: -500, rotationX: 50, rotationY: -30, opacity: 0, scale: 0.6 },
+        { y: 0, z: 0, rotationX: 0, rotationY: 0, opacity: 1, scale: 1, ease: 'expo.out', duration: 2.5 },
+        '-=0.8'
+      )
+
+      /* Phase 4 — Instagram UI widgets stagger in */
+      .to('.ch-ig-header',     { opacity: 1, ease: 'back.out(1.2)', duration: 1.2 }, '-=1.8')
+      .to('.ch-ig-stats',      { opacity: 1, ease: 'back.out(1.2)', duration: 1.2 }, '-=1.0')
+      .to('.ch-ig-photo-grid', { opacity: 1, ease: 'back.out(1.2)', duration: 1.2 }, '-=0.8')
+
+      /* Phase 5 — floating badges pop in */
+      .fromTo('.ch-float-badge',
+        { y: 80, opacity: 0, scale: 0.7, rotationZ: -8 },
+        { y: 0, opacity: 1, scale: 1, rotationZ: 0, ease: 'back.out(1.5)', duration: 1.5, stagger: 0.25 },
+        '-=1.5'
+      )
+
+      /* Phase 6 — left + right card text slide in */
+      .fromTo('.ch-card-left',
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, ease: 'power4.out', duration: 1.5 },
+        '-=1.2'
+      )
+      .fromTo('.ch-card-right',
+        { x: 50, opacity: 0, scale: 0.85 },
+        { x: 0, opacity: 1, scale: 1, ease: 'expo.out', duration: 1.5 },
+        '<'
+      )
+
+      /* Hold — let the viewer absorb the card */
+      .to({}, { duration: 2.5 })
+
+      /* Phase 7 — transition to CTA */
+      .to('.ch-hero-text-wrapper', { opacity: 0, duration: 0.01 })
+      .to('.ch-cta-wrapper',       { opacity: 1, duration: 0.01 })
+      .to({}, { duration: 1.5 })
+
+      /* Phase 8 — card content fades, card pulls back */
+      .to(['.ch-mockup-inner', '.ch-float-badge', '.ch-card-left', '.ch-card-right'], {
+        scale: 0.9, y: -40, z: -200, opacity: 0, ease: 'power3.in', duration: 1.2, stagger: 0.05
+      })
+      .to('#ch-main-card', {
+        width: isMob ? '92vw' : '85vw',
+        height: isMob ? '92svh' : '85svh',
+        borderRadius: isMob ? '32px' : '40px',
+        ease: 'expo.inOut', duration: 1.8
+      }, 'pb')
+      .to('.ch-cta-wrapper', {
+        scale: 1, filter: 'blur(0px)', ease: 'expo.inOut', duration: 1.8
+      }, 'pb')
+
+      void 0;
+  }); }
+</script>
+
+<!-- liquid glass SVG filter -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+  <defs>
+    <filter id="bmalt-glass" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="noise"/>
+      <feGaussianBlur in="noise" stdDeviation="2" result="blurNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="blurNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+      <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/>
+      <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+    </filter>
+  </defs>
+</svg>
+</body>
+</html>
