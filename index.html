@@ -843,11 +843,18 @@
       /* NAV */
       .nav-ig span { display: none; }
       .ni { padding: 0 1.25rem; }
+      nav {
+        background: rgba(254,253,249,0.97);
+        backdrop-filter: blur(20px);
+        border-color: var(--br);
+      }
+      .nav-ig { color: var(--rose); }
+      .logo { color: var(--txt); }
 
       /* HERO — image top, text below */
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-r { order: -1; }
-      .hero-r img { height: 92vw; object-position: center 70%; width: 100%; }
+      .hero-r img { height: 92vw; object-position: 55% 90%; width: 100%; }
       .hero-r::after { background: none; }
       .hero-l {
         padding: 3rem 1.5rem 4rem;
