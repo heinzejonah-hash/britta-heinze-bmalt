@@ -168,6 +168,25 @@
       font-weight: 400; font-style: italic; color: var(--rose);
       padding-left: 4rem;
       animation: fadeUp 0.8s ease 0.44s forwards;
+      position: relative;
+      height: 1em;
+      overflow: hidden;
+    }
+    .hl-word {
+      position: absolute; top: 0; left: 0;
+      opacity: 0;
+      transform: translateY(0.7em);
+      transition: opacity 0.45s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      white-space: nowrap;
+    }
+    .hl-word.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hl-word.exit {
+      opacity: 0;
+      transform: translateY(-0.6em);
+      transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.55, 0, 0.45, 1);
     }
 
     .hero-sub {
@@ -1018,7 +1037,13 @@
     <h1 class="hero-h1">
       <span class="hl hl-1">Farbe.</span>
       <span class="hl hl-2">Gefühl.</span>
-      <span class="hl hl-3">Unikat.</span>
+      <span class="hl hl-3" id="hero-cycle">
+        <span class="hl-word">Unikat.</span>
+        <span class="hl-word">Seele.</span>
+        <span class="hl-word">Leben.</span>
+        <span class="hl-word">Kraft.</span>
+        <span class="hl-word">Magie.</span>
+      </span>
     </h1>
     <p class="hero-sub">
       Abstrakte Originalwerke, die Räume verwandeln.
@@ -1404,6 +1429,22 @@
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('on', window.scrollY > 40), { passive: true });
+
+  /* Animated hero word cycle */
+  (function () {
+    const words = document.querySelectorAll('#hero-cycle .hl-word');
+    let current = 0;
+    words[0].classList.add('active');
+    function cycle() {
+      const prev = current;
+      current = (current + 1) % words.length;
+      words[prev].classList.remove('active');
+      words[prev].classList.add('exit');
+      words[current].classList.add('active');
+      setTimeout(() => words[prev].classList.remove('exit'), 500);
+    }
+    setTimeout(() => setInterval(cycle, 2000), 1400);
+  })();
 
   /* Liquid glass CTAs */
   function applyGlass(el, dark) {
