@@ -834,6 +834,96 @@
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: var(--bg2); }
     ::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 2px; }
+
+    /* ─────────────────────────────────────────
+       MOBILE — ≤ 600px
+    ───────────────────────────────────────── */
+    @media(max-width:600px) {
+
+      /* NAV */
+      .nav-ig span { display: none; }
+
+      /* HERO */
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-r { order: -1; }
+      .hero-r img { height: 72vw; object-position: center 20%; }
+      .hero-l {
+        padding: 3rem 1.25rem 3.5rem;
+        border-right: none; border-top: 1px solid var(--br);
+      }
+      .eyebrow { font-size: 0.52rem; letter-spacing: 0.18em; }
+      .hero-h1 { margin-bottom: 2rem; }
+      .hl   { font-size: clamp(2.6rem, 11vw, 4rem); }
+      .hl-3 { font-size: clamp(3rem, 12vw, 4.4rem); }
+      .hero-sub { font-size: 0.9rem; margin-bottom: 2rem; }
+      .ctas { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+      .ctas .btn-dark,
+      .ctas .btn-ghost { justify-content: center; padding: 1rem; }
+      .hero-stats { display: none; }
+
+      /* SECTIONS — global padding */
+      .gallery-s,
+      .about-s,
+      .test-s,
+      .ig-s { padding: 4.5rem 1.25rem; }
+      .cta-s { padding: 5rem 1.25rem; }
+      .s-head { margin-bottom: 2.5rem; }
+      .s-h2 { font-size: clamp(1.6rem, 6.5vw, 2rem); }
+
+      /* GALLERY */
+      .gal-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .gi-main { grid-row: auto; }
+      .gi img { height: 72vw; }
+      .gal-footer { margin-top: 1.5rem; }
+
+      /* ABOUT */
+      .about-inner { gap: 2rem; }
+      .about-portrait { max-width: 160px; }
+      .about-quote { font-size: 1rem; padding-left: 1.1rem; }
+
+      /* TESTIMONIALS */
+      .test-cols { max-height: 520px; }
+
+      /* CTA SECTION */
+      .cta-s { text-align: center; }
+      .cta-h2 { font-size: clamp(1.7rem, 6vw, 2.4rem); }
+      .cta-p { font-size: 0.88rem; margin-bottom: 2rem; }
+      .btn-rose { width: 100%; justify-content: center; padding: 1rem; }
+
+      /* INSTAGRAM */
+      .ig-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ig-text { order: 1; }
+      .ig-grid-wrap { order: 2; }
+      .ig-grid { height: 260px; gap: 4px; }
+      .ig-profile-badge { bottom: -12px; left: 8px; padding: 0.7rem 1rem; }
+      .ig-badge-name { font-size: 0.72rem; }
+      .ig-stats-row { gap: 1.5rem; }
+      .btn-ig { width: 100%; justify-content: center; margin-top: 0.5rem; }
+
+      /* FOOTER */
+      footer { padding: 2rem 1.25rem; }
+      .foot-i { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .foot-copy { font-size: 0.6rem; line-height: 1.7; }
+
+      /* MARQUEE */
+      .strip-item { font-size: 0.75rem; }
+    }
+
+    /* ─────────────────────────────────────────
+       TABLET — 601px – 900px
+    ───────────────────────────────────────── */
+    @media(min-width:601px) and (max-width:900px) {
+      .gallery-s, .about-s, .test-s, .ig-s { padding: 6rem 2rem; }
+      .cta-s { padding: 7rem 2rem; }
+      .hero-l { padding: 5rem 2.5rem 4rem 2rem; }
+      .ctas { flex-wrap: wrap; gap: 0.75rem; }
+      .ig-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .ig-grid { height: 300px; }
+      footer { padding: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -1078,7 +1168,7 @@
     </div>
 
     <!-- Right: feed grid -->
-    <div style="position:relative;" class="rv d2">
+    <div style="position:relative;" class="ig-grid-wrap rv d2">
       <div class="ig-grid">
         <div class="ig-cell">
           <img src="img/werk-4.jpg" alt="b.malt Werk" loading="lazy" />
